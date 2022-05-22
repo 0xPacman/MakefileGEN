@@ -6,7 +6,7 @@
 #    By: ahjadani <ahjadani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 18:31:40 by ahjadani          #+#    #+#              #
-#    Updated: 2022/05/22 18:47:09 by ahjadani         ###   ########.fr        #
+#    Updated: 2022/05/22 18:54:45 by ahjadani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ NC='\033[0m'
 echo "${RED}Makefile Generator${NC}"
 echo ""
 read -p "Compiler: " compiler
-read -p "Enter the name of the project: " project
+read -p "Enter the name of the program: " program
 read -p "Enter additional flags: " xflags
 read -p "Enter files sperated by space: " files
 read -p "Enter the header file: " header
@@ -33,8 +33,12 @@ if [ -z "$compiler" ]; then
 	compiler="gcc"
 fi
 
-if [ -z "$project" ]; then
-	project="project"
+if [ -z "$program" ]; then
+	program="program"
+fi
+
+if [ -z "$header" ]; then
+	files=$(find . -name "*.h" -print | tr '\n' ' '| sed 's/\.\///g')
 fi
 
 echo "
@@ -42,7 +46,7 @@ CC = ${compiler}
 CFLAGS = -Werror -Wextra -Wall 
 FILES = ${files}
 OBJECTS = \$(FILES:.c=.o)
-NAME = ${project}
+NAME = ${program}
 XFLAGS = ${xflags}
 HEADER = ${header}
 RM = rm -f
