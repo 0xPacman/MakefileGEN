@@ -6,7 +6,7 @@
 #    By: ahjadani <ahjadani@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/22 18:31:40 by ahjadani          #+#    #+#              #
-#    Updated: 2022/05/22 18:31:45 by ahjadani         ###   ########.fr        #
+#    Updated: 2022/05/22 18:47:09 by ahjadani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ read -p "Enter files sperated by space: " files
 read -p "Enter the header file: " header
 
 if [ -z "$files" ]; then
-	files="main.c"
+	files=$(find . -name "*.c" -print | tr '\n' ' '| sed 's/\.\///g')
 fi
 
 if [ -z "$compiler" ]; then
