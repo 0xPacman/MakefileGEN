@@ -38,7 +38,7 @@ if [ -z "$program" ]; then
 fi
 
 if [ -z "$header" ]; then
-	files=$(find . -name "*.h" -print | tr '\n' ' '| sed 's/\.\///g')
+	header=$(find . -name "*.h" -print | tr '\n' ' '| sed 's/\.\///g')
 fi
 
 echo "
